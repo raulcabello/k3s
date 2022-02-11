@@ -6,6 +6,8 @@ if [ -n ${DEBUG} ]; then
     set -x
 fi
 
+. ./scripts/version.sh
+
 # skipping image scan for s390x since trivy doesn't support s390x arch yet
 if [ "${ARCH}" == "s390x" ]; then
     exit 0
