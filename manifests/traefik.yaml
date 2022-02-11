@@ -32,7 +32,8 @@ spec:
           enabled: true
     priorityClassName: "system-cluster-critical"
     image:
-      name: "rancher/mirrored-library-traefik"
+      name: "raulcabm/traefik"
+      tag: "s390x"
     tolerations:
     - key: "CriticalAddonsOnly"
       operator: "Exists"
