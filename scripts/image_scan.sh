@@ -6,6 +6,11 @@ if [ -n ${DEBUG} ]; then
     set -x
 fi
 
+# skipping image scan for s390x since trivy doesn't support s390x arch yet
+if [ "${ARCH}" == "s390x" ]; then
+    exit 0
+fi
+
 if [ -z $1 ]; then
     echo "error: image name required as argument. exiting..."
     exit 1
