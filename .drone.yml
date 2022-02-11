@@ -36,3 +36,8 @@ steps:
     - refs/tags/*
     event:
     - tag
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
