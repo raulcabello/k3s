@@ -22,7 +22,7 @@ steps:
   image: rancher/drone-images:github-release-s390x
   settings:
     api_key:
-      from_secret: github_token
+      from_secret: github
     prerelease: true
     checksum:
     - sha256
