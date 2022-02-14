@@ -91,7 +91,7 @@ set -o noglob
 #     Channel to use for fetching k3s download URL.
 #     Defaults to 'stable'.
 
-GITHUB_URL=https://github.com/k3s-io/k3s/releases
+GITHUB_URL=https://github.com/raulcabello/k3s/releases
 STORAGE_URL=https://storage.googleapis.com/k3s-ci-builds
 DOWNLOADER=
 
@@ -270,7 +270,6 @@ setup_env() {
     # --- setup channel values
     INSTALL_K3S_CHANNEL_URL=${INSTALL_K3S_CHANNEL_URL:-'https://update.k3s.io/v1-release/channels'}
     INSTALL_K3S_CHANNEL=${INSTALL_K3S_CHANNEL:-'stable'}
-    TAG=${INSTALL_K3S_CHANNEL_URL:-'v1.22.6-rc7s390x'}
 }
 
 # --- check if skip download environment variable set ---
@@ -355,7 +354,7 @@ get_release_version() {
         VERSION_K3S=${INSTALL_K3S_VERSION}
     else
         info "Finding release for channel ${INSTALL_K3S_CHANNEL}"
-        version_url="https://github.com/raulcabello/k3s/releases/tag/${TAG}"
+        version_url="${INSTALL_K3S_CHANNEL_URL}/${INSTALL_K3S_CHANNEL}"
         case $DOWNLOADER in
             curl)
                 VERSION_K3S=$(curl -w '%{url_effective}' -L -s -S ${version_url} -o /dev/null | sed -e 's|.*/||')
@@ -400,8 +399,8 @@ download_hash() {
     fi
     info "Downloading hash ${HASH_URL}"
     download ${TMP_HASH} ${HASH_URL}
-    HASH_EXPECTED=$(grep " k3s${SUFFIX}$" ${TMP_HASH})
-    HASH_EXPECTED=${HASH_EXPECTED%%[[:blank:]]*}
+    #HASH_EXPECTED=$(grep " k3s${SUFFIX}$" ${TMP_HASH})
+    #HASH_EXPECTED=${HASH_EXPECTED%%[[:blank:]]*}
 }
 
 # --- check hash against installed version ---
@@ -556,7 +555,7 @@ download_and_verify() {
     fi
 
     download_binary
-    verify_binary
+    #verify_binary
     setup_binary
 }
 

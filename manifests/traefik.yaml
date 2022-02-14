@@ -33,7 +33,7 @@ spec:
     priorityClassName: "system-cluster-critical"
     image:
       name: "raulcabm/traefik"
-      tag: "s390x"
+      tag: "2.6.0-s390x"
     tolerations:
     - key: "CriticalAddonsOnly"
       operator: "Exists"
