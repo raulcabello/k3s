@@ -398,7 +398,7 @@ download_hash() {
         HASH_URL=${GITHUB_URL}/download/${VERSION_K3S}/sha256sum-${ARCH}.txt
     fi
     info "Downloading hash ${HASH_URL}"
-    download ${TMP_HASH} ${HASH_URL}
+    #download ${TMP_HASH} ${HASH_URL}
     #HASH_EXPECTED=$(grep " k3s${SUFFIX}$" ${TMP_HASH})
     #HASH_EXPECTED=${HASH_EXPECTED%%[[:blank:]]*}
 }
